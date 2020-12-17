@@ -810,7 +810,13 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
             behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             pointerEvents="box-none"
             style={computedStyle.concat([{margin: 0}])}>
-            {containerView}
+             {Platform.OS === 'android' ? (
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {containerView}
+              </ScrollView>
+            ) : (
+              containerView
+            )}
           </KeyboardAvoidingView>
         ) : (
           containerView
